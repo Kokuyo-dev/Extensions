@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "org.kokuyo.metadata",
+  "name": "Metadata Provider",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kokuyo Community",
+    "url": "https://github.com/kokuyo/ext-anilist-metadata"
+  },
+  "description": "Anime/manga metadata via the AniList GraphQL API. Provides titles, cover art, synopses, episode lists, tags, and relations.",
+  "homepage": "https://anilist.co",
+  "license": "MIT",
+  "nsfw": false,
+  "provides": [
+    {
+      "capability": "metadata-provider",
+      "methods": [
+        "search",
+        "getDetails",
+        "getBatchDetails",
+        "getRelations",
+        "getTags",
+        "getEpisodes",
+        "getTrending",
+        "getPopular",
+        "getNewThisSeason",
+        "getSeasonCatalog",
+        "getLatestEpisodes"
+      ],
+      "idScheme": "primary",
+      "categories": [
+        "anime",
+        "manga"
+      ]
+    },
+    {
+      "capability": "tag-taxonomy",
+      "methods": [
+        "listTags",
+        "resolveTag"
+      ],
+      "tagNamespace": "anilist",
+      "categories": [
+        "anime",
+        "manga"
+      ]
+    }
+  ],
+  "requires": [],
+  "permissions": {
+    "network": [
+      "https://graphql.anilist.co/*"
+    ],
+    "storage": "per-extension",
+    "ui": [
+      "settings-panel"
+    ]
+  },
+  "activation": {
+    "on": [
+      "capability-request:metadata-provider",
+      "capability-request:tag-taxonomy"
+    ],
+    "lazy": true
+  },
+  "config": {
+    "apiKey": {
+      "type": "text",
+      "label": "AniList API token (optional, raises rate limits)",
+      "default": "",
+      "secret": true,
+      "description": "Paste your AniList API token here for higher rate limits. Without it, the extension uses anonymous access (60 req/min)."
+    },
+    "prefSub": {
+      "type": "toggle",
+      "label": "Prefer English subtitles over romaji titles",
+      "default": false
+    }
+  },
+  "engines": {
+    "kokuyo": "^1.0.0"
+  }
+}

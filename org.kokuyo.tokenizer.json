@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "org.kokuyo.tokenizer",
+  "name": "Tokenizer",
+  "version": "1.1.0",
+  "author": {
+    "name": "Kokuyo Community"
+  },
+  "description": "Japanese morphological analysis via the JPDB parse API. Requires your own JPDB API key. Tokenizes text into morphemes with readings, furigana, and pitch accent for furigana display and word-boundary detection.",
+  "homepage": "https://jpdb.io",
+  "license": "MIT",
+  "nsfw": false,
+  "provides": [
+    {
+      "capability": "tokenizer",
+      "methods": [
+        "tokenize",
+        "tokenizeBatch"
+      ],
+      "categories": [
+        "anime",
+        "manga",
+        "novels",
+        "music",
+        "lessons"
+      ]
+    }
+  ],
+  "requires": [],
+  "permissions": {
+    "network": [
+      "https://jpdb.io/api/v1/*"
+    ],
+    "storage": "per-extension",
+    "ui": [
+      "settings-panel"
+    ]
+  },
+  "activation": {
+    "on": [
+      "capability-request:tokenizer"
+    ],
+    "lazy": true
+  },
+  "config": {
+    "apiKey": {
+      "type": "text",
+      "secret": true,
+      "label": "JPDB API key",
+      "default": "",
+      "description": "Get your API key from jpdb.io/settings (Account tab). Used for parsing Japanese text into morphemes."
+    }
+  },
+  "engines": {
+    "kokuyo": "^1.0.0"
+  }
+}

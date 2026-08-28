@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "org.kokuyo.mining",
+  "name": "Mining Target",
+  "version": "1.1.0",
+  "author": {
+    "name": "Kokuyo Community",
+    "url": "https://jpdb.io"
+  },
+  "description": "Mine words to your JPDB decks for spaced repetition review. Requires your own JPDB API key and a deck ID. You are responsible for complying with JPDB's terms of service.",
+  "homepage": "https://jpdb.io",
+  "license": "MIT",
+  "nsfw": false,
+  "provides": [
+    {
+      "capability": "mining-target",
+      "methods": [
+        "mine",
+        "isMined",
+        "getMinedWords"
+      ],
+      "categories": [
+        "anime",
+        "manga",
+        "novels",
+        "music",
+        "lessons"
+      ]
+    }
+  ],
+  "requires": [],
+  "permissions": {
+    "network": [
+      "https://jpdb.io/api/v1/*"
+    ],
+    "storage": "per-extension",
+    "ui": [
+      "settings-panel"
+    ]
+  },
+  "activation": {
+    "lazy": true
+  },
+  "config": {
+    "apiKey": {
+      "type": "text",
+      "secret": true,
+      "label": "JPDB API key",
+      "default": "",
+      "description": "Get your API key from jpdb.io/settings (Account tab)."
+    },
+    "deckId": {
+      "type": "text",
+      "label": "Default deck ID",
+      "default": "",
+      "description": "The deck ID to mine words into. Find it in your JPDB deck URL (the number after /deck/)."
+    }
+  },
+  "engines": {
+    "kokuyo": "^1.0.0"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "org.kokuyo.play",
+  "name": "MegaPlay Streaming",
+  "version": "2.1.0",
+  "author": {
+    "name": "Kokuyo Community"
+  },
+  "description": "Anime streaming source. Resolves playable HLS streams directly — works in all browsers including Brave (no iframe, no companion extension needed). Includes bundled English subtitles when available. Pair with a subtitle-source extension for Japanese subtitles.",
+  "homepage": "https://kokuyo.app",
+  "license": "MIT",
+  "nsfw": false,
+  "provides": [
+    {
+      "capability": "streaming-source",
+      "methods": [
+        "getVideosDirect"
+      ],
+      "categories": [
+        "anime"
+      ]
+    }
+  ],
+  "requires": [],
+  "permissions": {
+    "network": [
+      "https://megaplay.buzz/*",
+      "https://megap.*/",
+      "https://1oe.lostproject.club/*"
+    ],
+    "storage": "per-extension",
+    "ui": [
+      "settings-panel"
+    ]
+  },
+  "activation": {
+    "on": [
+      "capability-request:streaming-source"
+    ],
+    "lazy": true
+  },
+  "config": {},
+  "engines": {
+    "kokuyo": "^1.0.0"
+  }
+}

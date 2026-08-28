@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "org.kokuyo.subtitles",
+  "name": "Subtitle Source",
+  "version": "1.1.0",
+  "author": {
+    "name": "Kokuyo Community",
+    "url": "https://jimaku.cc"
+  },
+  "description": "Japanese subtitles from the Jimaku community database. Requires your own Jimaku API key. You are responsible for complying with Jimaku's terms of service and applicable copyright law in your jurisdiction.",
+  "homepage": "https://jimaku.cc",
+  "license": "MIT",
+  "nsfw": false,
+  "provides": [
+    {
+      "capability": "subtitle-source",
+      "methods": [
+        "listSubtitles",
+        "fetchSubtitle"
+      ],
+      "categories": [
+        "anime"
+      ]
+    }
+  ],
+  "requires": [],
+  "permissions": {
+    "network": [
+      "https://jimaku.cc/*"
+    ],
+    "storage": "per-extension",
+    "ui": [
+      "settings-panel"
+    ]
+  },
+  "activation": {
+    "on": [
+      "capability-request:subtitle-source"
+    ],
+    "lazy": true
+  },
+  "config": {
+    "apiKey": {
+      "type": "text",
+      "secret": true,
+      "label": "Jimaku API key",
+      "default": "",
+      "description": "Get your API key from jimaku.cc/account (Developer Access section). Used for listing and downloading subtitles."
+    }
+  },
+  "engines": {
+    "kokuyo": "^1.0.0"
+  }
+}
